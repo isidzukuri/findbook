@@ -1,3 +1,10 @@
+PATH
+  remote: apps/library
+  specs:
+    library (0.1.0)
+      mysql2
+      rails (~> 6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -206,6 +213,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
+  library!
   listen (>= 3.0.5, < 3.2)
   mysql2
   puma (~> 3.11)
