@@ -8,7 +8,6 @@ module Library
       step :validate
       step :persist
       # TODO:
-      # step :add_authors
       # step :add_to_elastic
       # step :store_cover
 
@@ -21,6 +20,13 @@ module Library
       def generate_slug
         result = Seo::GenerateSlug.call(object: not_uniq_book, attribute: :title)
         context[:book].seo = result.context[:slug]
+      end
+
+      def add_authors
+        if params[:book][:authors_ids]
+          item.authors = Author.where(id: params[:book][:authors_ids])
+          params[:book].delete :authors_ids
+        end
       end
 
       def validate
