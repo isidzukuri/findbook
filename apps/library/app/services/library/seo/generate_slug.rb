@@ -16,6 +16,10 @@ module Library
         unless params[:attribute].present?
           raise ArgumentError, ':attribute parameter required'
         end
+
+        unless params[:object][params[:attribute]].present?
+          error!(params[:attribute], 'can\'t be blank')
+        end
       end
 
       def generate_slug

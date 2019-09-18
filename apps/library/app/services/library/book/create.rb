@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 module Library
-  module Book
+  class Book
     class Create < ::SimpleTools::Operation
       step :build
       step :generate_slug
+      step :add_authors_by_ids
       step :validate
       step :persist
       # TODO:
@@ -18,14 +19,14 @@ module Library
       end
 
       def generate_slug
-        result = Seo::GenerateSlug.call(object: not_uniq_book, attribute: :title)
+        result = Seo::GenerateSlug.call(object: context[:book], attribute: :title)
+
         context[:book].seo = result.context[:slug]
       end
 
-      def add_authors
-        if params[:book][:authors_ids]
-          item.authors = Author.where(id: params[:book][:authors_ids])
-          params[:book].delete :authors_ids
+      def add_authors_by_ids
+        if params[:authors_ids]
+          context[:book].authors = Author.where(id: params[:authors_ids])
         end
       end
 
