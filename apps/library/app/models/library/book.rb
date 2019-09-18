@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Library
   class Book < ApplicationRecord
     has_and_belongs_to_many :authors
