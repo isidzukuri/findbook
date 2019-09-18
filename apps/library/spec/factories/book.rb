@@ -13,5 +13,10 @@ FactoryBot.define do
     epub { FFaker::Internet.http_url }
     mobi { FFaker::Internet.http_url }
     djvu { FFaker::Internet.http_url }
+
+    trait :completed do
+      seo {FFaker::Internet.slug}
+      authors { [create(:author)] }
+    end
   end
 end

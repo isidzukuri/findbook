@@ -6,7 +6,6 @@ RSpec.describe Library::Book::Create do
 
   describe '.call' do
     it 'creates new db entry' do
-      create(:author, :with_book)
       expect { described_class.call(book: params) }.to change { Library::Book.count }.by(1)
     end
 
