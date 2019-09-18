@@ -17,6 +17,7 @@ require 'factory_bot_rails'
 require 'ffaker'
 require 'simple_tools'
 require 'stringex'
+require 'awesome_print'
 
 ActiveRecord::Migration.maintain_test_schema!
 
