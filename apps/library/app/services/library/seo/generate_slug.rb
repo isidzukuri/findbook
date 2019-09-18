@@ -2,13 +2,15 @@
 
 module Library
   module Seo
-    class GenerateSlug < SimpleTools::Operation
+    class GenerateSlug < ::SimpleTools::Operation
+      SLUG_COLUMN = :seo
+
       step :validate_params
       step :generate_slug
 
       def validate_params
-        unless params[:obgect].is_a?(ActiveRecord::Base)
-          raise ArgumentError, 'Object must be ar instance required'
+        unless params[:object].is_a?(ActiveRecord::Base)
+          raise ArgumentError, 'Object must be AR instance'
         end
 
         unless params[:attribute].present?
@@ -28,7 +30,8 @@ module Library
       end
 
       def valid?
-        !context[:object].exists?(context[:attribute] => context[:slug])
+        slug_column = params[:slug_column] || SLUG_COLUMN
+        !params[:object].class.exists?(slug_column => context[:slug])
       end
 
       def add_uniqness

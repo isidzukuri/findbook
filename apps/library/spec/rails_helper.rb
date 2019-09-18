@@ -14,6 +14,9 @@ ActiveRecord::Migrator.migrations_paths << File.expand_path('../db/migrate', __d
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'ffaker'
+require 'simple_tools'
+require 'stringex'
 
 ActiveRecord::Migration.maintain_test_schema!
 
