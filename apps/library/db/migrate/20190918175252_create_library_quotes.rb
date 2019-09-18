@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLibraryQuotes < ActiveRecord::Migration[6.0]
   def change
     create_table :library_quotes do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLibraryArticles < ActiveRecord::Migration[6.0]
   def change
     create_table :library_articles do |t|

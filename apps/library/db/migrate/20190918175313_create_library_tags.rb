@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateLibraryTags < ActiveRecord::Migration[6.0]
   def change
     create_table :library_tags do |t|

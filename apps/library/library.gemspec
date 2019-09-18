@@ -32,9 +32,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_tools'
   s.add_dependency 'stringex'
 
+  s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'awesome_print'
 end
