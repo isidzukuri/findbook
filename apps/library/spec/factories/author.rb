@@ -6,5 +6,9 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     full_name { FFaker::Name.name }
     seo { FFaker::Name.last_name }
+
+    trait :with_book do
+      books { [create(:book, seo: FFaker::Internet.slug)] }
+    end
   end
 end
