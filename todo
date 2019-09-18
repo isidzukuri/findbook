@@ -1,0 +1,21 @@
+-  https://github.com/elastic/elasticsearch-rails
+													-  rails 6
+													- migrations from engines
+- engines generator
+- redis cache
+- action cache
+- new parser on reactor
+- api
+- admin
+- feature testing
+														-  ffaker
+- factorybot
+- capybara
+														- new slug
+- device
+- capistrano deploy
+- upload images to amazon
+- activestorage
+- paginator
+- bootstrap
+-status enum

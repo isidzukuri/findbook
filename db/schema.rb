@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_145612) do
+ActiveRecord::Schema.define(version: 2019_09_18_175313) do
+
+  create_table "library_articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "text"
+    t.string "cover"
+    t.string "seo"
+    t.integer "user_id"
+    t.integer "status", default: 1
+    t.index ["seo"], name: "index_library_articles_on_seo", unique: true
+    t.index ["title"], name: "index_library_articles_on_title"
+  end
 
   create_table "library_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name"
@@ -59,6 +71,64 @@ ActiveRecord::Schema.define(version: 2019_09_18_145612) do
     t.index ["seo"], name: "index_library_books_on_seo", unique: true
     t.index ["source"], name: "index_library_books_on_source"
     t.index ["title"], name: "index_library_books_on_title"
+  end
+
+  create_table "library_books_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id"], name: "index_library_books_lists_on_book_id"
+    t.index ["list_id", "book_id"], name: "index_library_books_lists_on_list_id_and_book_id", unique: true
+    t.index ["list_id"], name: "index_library_books_lists_on_list_id"
+  end
+
+  create_table "library_books_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id"], name: "index_library_books_tags_on_book_id"
+    t.index ["tag_id", "book_id"], name: "index_library_books_tags_on_tag_id_and_book_id", unique: true
+    t.index ["tag_id"], name: "index_library_books_tags_on_tag_id"
+  end
+
+  create_table "library_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "seo"
+    t.index ["seo"], name: "index_library_genres_on_seo", unique: true
+  end
+
+  create_table "library_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "cover"
+    t.string "seo"
+    t.integer "user_id"
+    t.integer "status", default: 0
+    t.index ["seo"], name: "index_library_lists_on_seo", unique: true
+    t.index ["title"], name: "index_library_lists_on_title"
+  end
+
+  create_table "library_quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.integer "user_id"
+    t.integer "book_id"
+    t.boolean "hide"
+    t.string "book_name"
+    t.string "author_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_library_quotes_on_book_id"
+    t.index ["user_id"], name: "index_library_quotes_on_user_id"
+  end
+
+  create_table "library_recomendations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "order", default: 999
+  end
+
+  create_table "library_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "seo"
+    t.string "uk"
+    t.index ["seo"], name: "index_library_tags_on_seo", unique: true
   end
 
 end
