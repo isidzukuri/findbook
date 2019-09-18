@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe Library::Seo::GenerateSlug do
-  let(:book){ build(:book) }
+  let(:book) { build(:book) }
 
   describe '.call' do
     it 'validates params' do
-      expect{described_class.call}.to raise_error(ArgumentError)
-      expect{described_class.call(object: Library::Book.new)}.to raise_error(ArgumentError)
+      expect { described_class.call }.to raise_error(ArgumentError)
+      expect { described_class.call(object: Library::Book.new) }.to raise_error(ArgumentError)
     end
 
     it 'creates uniq slug by attribute' do
@@ -20,7 +20,7 @@ RSpec.describe Library::Seo::GenerateSlug do
       result = described_class.call(object: cyrylic_book, attribute: :title)
 
       expect(result.success?).to be_truthy
-      expect(result.context[:slug]).to eq("novii-chudovii-riepozitorii")
+      expect(result.context[:slug]).to eq('novii-chudovii-riepozitorii')
     end
 
     it 'adds suffix if slug exists' do
@@ -32,6 +32,5 @@ RSpec.describe Library::Seo::GenerateSlug do
 
       expect(result.success?).to be_truthy
     end
-
   end
 end
