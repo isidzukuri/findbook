@@ -1,7 +1,7 @@
 -  https://github.com/elastic/elasticsearch-rails
 													-  rails 6
 													- migrations from engines
-- engines generator
+													- engines generator
 - redis cache
 - action cache
 - new parser on reactor
@@ -18,4 +18,5 @@
 - activestorage
 - paginator
 - bootstrap
--status enum
+- status enum
+- blog
