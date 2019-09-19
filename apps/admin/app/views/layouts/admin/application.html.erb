@@ -43,7 +43,7 @@
     <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" %>
     <%= stylesheet_link_tag "admin/application", :media => "all" %>
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700,800,900&amp;subset=cyrillic-ext" rel="stylesheet" async>
-    <%= javascript_tag "application" %>
+    <%= javascript_include_tag "admin/application"%>
     <%= yield(:js) if content_for?(:js) %>
     <%= yield(:footer_js) if content_for?(:footer_js) %>
   </body>

@@ -6,6 +6,5 @@ module Admin
 
     validates :title, presence: true
     validates :seo, presence: true
-
   end
 end

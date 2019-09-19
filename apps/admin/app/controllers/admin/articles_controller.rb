@@ -5,7 +5,7 @@ module Admin
     def index
 
     # paginator
-      @items = Article.all
+      @items = Article.paginate(page: params[:page], per_page: @per_page)
     end
 
     def new
@@ -13,8 +13,9 @@ module Admin
     end
 
     def create
-      @article = Article.new(article_params)
-      if @article.save
+      result = Article::Create.call(article: article_params)
+      @article = result.context[:article]
+      if result.success?
         redirect_to articles_path
       else
         flash[:danger] = @article.errors.full_messages.join(', ')

@@ -1,4 +1,7 @@
 require "admin/engine"
+require 'simple_tools'
+require 'stringex'
+
 
 module Admin
   # Your code goes here...

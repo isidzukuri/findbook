@@ -32,7 +32,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 6.0.0'
   s.add_dependency 'sass-rails', '~> 5'
   s.add_dependency 'simple_tools'
-  s.add_dependency 'stringex'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
 
