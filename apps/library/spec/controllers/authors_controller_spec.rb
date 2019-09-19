@@ -19,7 +19,7 @@ RSpec.describe Library::AuthorsController, type: :controller do
   describe 'show' do
     let!(:author) { create(:author, :with_book)}
 
-    it 'displays list of authors' do
+    it 'displays list of authors books' do
       get :show,  params: {id: author.seo, use_route: :author}
 
       expect(response.status).to eq 200

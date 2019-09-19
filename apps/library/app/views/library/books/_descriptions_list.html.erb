@@ -1,15 +1,15 @@
 <div class="description_book_item">
 
   <% if item.thumb.present? %>
-  <a href='/books/<%= item.seo%>'>
+  <a href='<%= book_path(id: item.seo)%>'>
     <img src="<%= item.thumb %>" alt='<%= item.title %>' title='<%= item.title %>' class="book_cover" itemprop="image" />
   </a>
   <% end %>
 
-  <b><a href='/books/<%= item.seo%>'><%= item.title%></a></b><br/>
+  <b><a href='<%= book_path(id: item.seo)%>'><%= item.title%></a></b><br/>
 
   <% item.authors.each do |author|%>
-    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
+    <a href='<%= author_path(id: author.seo)%>' itemprop="author"><%= author.display_title%></a>
   <% end %>
 
   <% if descriptions && item.description.present? %>
@@ -17,6 +17,6 @@
       <%== HTMLEntities.new.decode(item.description) %>
   </div>
   <% end %>
-  
+
   <div class="clearfix"></div>
 </div>

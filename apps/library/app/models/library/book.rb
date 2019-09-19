@@ -9,5 +9,8 @@ module Library
     validates :title, presence: true
     validates :seo, presence: true
     validates_uniqueness_of :seo
+
+    def self.thumb(obj);end
+    def self.only_paper?(obj);end
   end
 end

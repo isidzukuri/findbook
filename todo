@@ -9,15 +9,15 @@
 - admin
 - feature testing
 														-  ffaker
-- factorybot
+														- factorybot
 - capybara
 														- new slug
 - device
 - capistrano deploy
 - upload images to amazon
 - activestorage
-- paginator
-- bootstrap
+														- paginator
+														- bootstrap
 - status enum
 - blog
-- views
+														- views
