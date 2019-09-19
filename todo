@@ -12,7 +12,7 @@
 														- factorybot
 - capybara
 														- new slug
-- device
+														- devise
 - capistrano deploy
 - upload images to amazon
 														- activestorage
