@@ -36,5 +36,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'rspec-rails', '~> 4.0.0.beta2'
+  s.add_development_dependency 'rails-controller-testing'
 end
