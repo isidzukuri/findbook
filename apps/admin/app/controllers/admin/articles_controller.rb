@@ -1,10 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class ArticlesController < ApplicationController
-
-
     def index
-
-    # paginator
       @items = Article.paginate(page: params[:page], per_page: @per_page)
     end
 

@@ -18,6 +18,6 @@
 - activestorage
 														- paginator
 														- bootstrap
-- status enum
+														- status enum
 - blog
 														- views

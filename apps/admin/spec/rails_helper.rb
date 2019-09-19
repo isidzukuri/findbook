@@ -20,7 +20,6 @@ require 'stringex'
 require 'awesome_print'
 require 'rails-controller-testing'
 
-
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
