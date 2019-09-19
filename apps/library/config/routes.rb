@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Library::Engine.routes.draw do
-  # root 'welcome#index'
+  root 'home#index'
   #
   # get 'errors/not_found'
   # get 'errors/internal_server_error'
