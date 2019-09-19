@@ -7,6 +7,8 @@ Library::Engine.routes.draw do
   # get 'errors/internal_server_error'
   #
   resources :authors,         only: [:index, :show]
+  resources :books,           only: [:show]
+
   # resources :contacts,        only: [:index]
   # resources :genres,          only: [:index, :show]
   # resources :lists,           only: [:index, :show]
@@ -16,11 +18,7 @@ Library::Engine.routes.draw do
   # resources :articles,        only: [:index, :show]
   # resources :tags,            only: [:index, :show]
   # resources :formats,         only: [:index, :show]
-  # resources :books,           only: [:show] do
-  #   collection do
-  #     get :autocomplete_with_seo
-  #   end
-  # end
+
   #
   # match '/404', to: 'errors#not_found', via: :all
   # match '/500', to: 'errors#internal_server_error', via: :all

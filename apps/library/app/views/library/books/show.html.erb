@@ -1,0 +1,103 @@
+<% title = HTMLEntities.new.decode(@book['title']) %>
+<div itemscope itemtype="http://schema.org/Book" id="book_page">
+  <h2 itemprop="name"><%= title %></h2>
+  <% @authors.each do |author|%>
+    <a href='/authors/<%= author.seo%>' itemprop="author"><%= author.display_title%></a>
+  <% end %>
+  <% if @book['genre_seo'].present? %>
+  / <a href='/genres/<%= @book['genre_seo']%>' itemprop="genre"><%= @book['genre_title'] %></a><br/>
+  <% end %>
+
+  <% @tags.each do |item|%>
+    <a href='/tags/<%= item.seo%>' class="label label-default"><%= item.uk%></a>
+  <% end %>
+  <hr/>
+
+  <% if @book['cover'].present? %>
+    <img src="<%= Book.thumb(@book) %>" alt='<%= @book['title'] %>' title='<%= @book['title'] %>' class="book_cover" itemprop="image" />
+  <% end %>
+  <% if @book['description'].present? %>
+  <div itemprop="description" class="justify">
+      <strong>Опис:</strong><br/>
+      <%== HTMLEntities.new.decode(@book['description']) %>
+  </div>
+  <% end %>
+  <div class="clearfix"></div>
+
+  <div>
+    <h3 class="bold">Доступні формати:</h3>
+
+    <% Book::FORMATS.each do |frmt| %>
+      <% next unless @book[frmt] %>
+      <%
+        sls_d = "https://rdr.salesdoubler.com.ua/in/offer/269?aid=20647&dlink="
+        admitad = "https://ad.admitad.com/g/a4afb4f21a7e808e4236d32ae27335/?ulp="
+        link = @book[frmt].include?(sls_d) ? @book[frmt].sub!(sls_d, admitad) : @book[frmt]
+      %>
+
+      <a href="<%=link%>" class="download_href" target="_blank" rel="nofollow">
+          <span class="glyphicon glyphicon-<%=frmt == 'paper' ? 'book' : 'cloud-download' %>" aria-hidden="true"></span>    
+          <%=frmt == :paper ? 'папір' : frmt.upcase %>
+      </a>
+    <% end %>
+  </div>
+  <hr>
+  <% if @read_also.present? %>
+  <div class="row">
+    <h3 class="section_title">читайте також:</h2>
+    
+    <% @read_also.each do |book|%>
+    <a href="/books/<%= book['seo'] %>" class="col-md-2 col-xs-4 book_panel_link read_also">
+      <img src="<%= Book.thumb(book) %>" alt="<%= book['title'] %>" title="<%= book['title'] %>" />
+    </a>
+    <% end %>
+  </div>
+  <% end%>
+
+  <div class="bottom_description">
+    <p>
+      В бібліотеці зібрані всі книги українською мовою в електронному (txt, rtf, doc, pdf, fb2, epub, mobi, djvu) та паперовому форматі. Книжку можна безкоштовно скачати клікнувши на необхідний Вам формат або купити паперовий варіант тексту з доставкою по Україні. Сайт бібліотеки оптимізований для роботи на телефонах, смартфонах(айфон, анроїд) і планшетах. Потрібну книгу Ви можете легко знайти за допомогою пошуку.
+    </p>
+  </div>
+</div>
+
+  <% content_for(:title, "#{title}. #{@authors[0].try(:display_title)}. Книга скачати безкоштовно або купити") %> 
+  <% content_for(:description, "#{title}. #{@authors[0].try(:display_title)}. Скачати книжку безкоштовно або купити з доставкою") %> 
+<% content_for :meta do %>
+<meta content='<%= @book['description'] %>' property='og:description'>
+<meta content='<%= Book.thumb(@book) %>' property='og:image'>
+<meta content='website' property='og:type'>
+<% end %>
+
+
+<script type="application/ld+json">
+{
+  "@context":"http://schema.org",
+  "@type":"Book",
+  "name" : "<%= title %>",
+  "author": {
+    "@type":"Person",
+    "name":"<%= @authors.first&.display_title %>"
+  },
+  "url" : "<%= url_for(only_path: false)%>",
+  
+  "workExample" : [{
+    "@type": "Book",
+    "isbn": "031676948",
+    "bookFormat": "http://schema.org/<%= Book.only_paper?(@book) ? 'Hardcover' : 'EBook' %>",
+    "potentialAction":{
+      "@type":"ReadAction",
+      "target":
+        {
+          "@type":"EntryPoint",
+          "urlTemplate":"<%= url_for(only_path: false)%>",
+          "actionPlatform":[
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/IOSPlatform",
+            "http://schema.org/AndroidPlatform"
+          ]
+        }
+    }
+  }]
+}
+</script>

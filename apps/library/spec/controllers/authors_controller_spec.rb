@@ -15,4 +15,18 @@ RSpec.describe Library::AuthorsController, type: :controller do
       expect(response.body).to include(authors[1].seo)
     end
   end
+
+  describe 'show' do
+    let!(:author) { create(:author, :with_book)}
+
+    it 'displays list of authors' do
+      get :show,  params: {id: author.seo, use_route: :author}
+
+      expect(response.status).to eq 200
+      expect(response).to render_template(:show)
+      expect(response.body).to include(author.full_name)
+      expect(response.body).to include(author.books[0].title)
+      expect(response.body).to include(author.books[0].seo)
+    end
+  end
 end

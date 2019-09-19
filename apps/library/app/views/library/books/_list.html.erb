@@ -1,0 +1,16 @@
+<% if !item.try(:is_copy) %>
+<div class="book_item">
+    <a href='<%= book_path(id: item.seo) %>'><%= item.title%></a><br/>
+    <% if item.authors.loaded? %>
+      <% item.authors.each do |author|%>
+        <a class="author_link" href='<%= author_path(id: item.seo)%>'><%= author.display_title%></a><br/>
+      <% end %>
+    <% end %>
+
+    <% Library::Format::AVAILABLE.each do |frmt| %>
+      <% next unless item[frmt] %>
+      <% frmt = 'папір' if frmt == :paper %>
+      <span class="label label-warning"><%=frmt%></span>
+    <% end %>
+</div>
+<%end%>
