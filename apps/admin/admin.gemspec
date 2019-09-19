@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'stringex'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
+  s.add_dependency "devise"
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'database_cleaner'

@@ -15,9 +15,9 @@
 - device
 - capistrano deploy
 - upload images to amazon
-- activestorage
+														- activestorage
 														- paginator
 														- bootstrap
 														- status enum
-- blog
+														- blog
 														- views

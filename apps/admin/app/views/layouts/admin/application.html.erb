@@ -23,7 +23,7 @@
         <a class="navbar-brand" href="/"><h1>Admin</h1></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-              <li><%= link_to "Articles", articles_path%></li>
+              <li><%= link_to("Articles", articles_path) rescue ''%></li>
           </ul>
         </div>
       </div>

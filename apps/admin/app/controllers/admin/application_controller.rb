@@ -6,7 +6,7 @@ module Admin
 
     protect_from_forgery with: :exception
 
-    before_action :paginator_params, :set_vars
+    before_action :authenticate_user!, :paginator_params, :set_vars
 
     def paginator_params
       @per_page = MAX_ITEMS_ON_PAGE

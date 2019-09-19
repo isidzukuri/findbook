@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_175313) do
+ActiveRecord::Schema.define(version: 2019_09_19_164905) do
 
   create_table "library_articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -129,6 +129,18 @@ ActiveRecord::Schema.define(version: 2019_09_18_175313) do
     t.string "seo"
     t.string "uk"
     t.index ["seo"], name: "index_library_tags_on_seo", unique: true
+  end
+
+  create_table "library_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_library_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_library_users_on_reset_password_token", unique: true
   end
 
 end
