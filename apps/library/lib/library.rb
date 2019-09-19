@@ -2,7 +2,7 @@
 
 require 'library/engine'
 require 'securerandom'
-require "will_paginate/bootstrap"
+require 'will_paginate/bootstrap'
 require 'htmlentities'
 
 module Library

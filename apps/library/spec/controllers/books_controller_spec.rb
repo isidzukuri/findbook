@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Library::BooksController, type: :controller do
   render_views
 

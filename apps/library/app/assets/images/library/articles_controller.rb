@@ -1,5 +1,6 @@
-module Bibliotheca
+# frozen_string_literal: true
 
+module Bibliotheca
   class ArticlesController < ApplicationController
     def index
       @items = Article.order(id: :desc).where(status: :published).paginate(page: params[:page], per_page: @per_page).all

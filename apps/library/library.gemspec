@@ -27,20 +27,19 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
+  s.add_dependency 'htmlentities'
   s.add_dependency 'mysql2'
   s.add_dependency 'rails', '~> 6.0.0'
+  s.add_dependency 'sass-rails', '~> 5'
   s.add_dependency 'simple_tools'
   s.add_dependency 'stringex'
-  s.add_dependency 'sass-rails', '~> 5'
   s.add_dependency 'will_paginate', '~> 3.1.0'
   s.add_dependency 'will_paginate-bootstrap'
-  s.add_dependency 'htmlentities'
-
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails', '~> 4.0.0.beta2'
   s.add_development_dependency 'rails-controller-testing'
+  s.add_development_dependency 'rspec-rails', '~> 4.0.0.beta2'
 end

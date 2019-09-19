@@ -15,7 +15,7 @@ FactoryBot.define do
     djvu { FFaker::Internet.http_url }
 
     trait :completed do
-      seo {FFaker::Internet.slug}
+      seo { FFaker::Internet.slug }
       authors { [create(:author)] }
     end
   end

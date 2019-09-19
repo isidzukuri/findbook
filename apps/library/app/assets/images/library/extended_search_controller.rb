@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Bibliotheca
-class ExtendedSearchController < ApplicationController
-  def new
-    @genres = Genre.all
-  end
+  class ExtendedSearchController < ApplicationController
+    def new
+      @genres = Genre.all
+    end
 
-  def show
-    redirect_to :root unless params[:word].present?
+    def show
+      redirect_to :root unless params[:word].present?
 
-    @books = Book::ExtendedSearchQuery.new(params).call
+      @books = Book::ExtendedSearchQuery.new(params).call
+    end
   end
-end
 end

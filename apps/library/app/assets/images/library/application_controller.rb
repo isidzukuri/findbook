@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bibliotheca
   class ApplicationController < ActionController::Base
     # Prevent CSRF attacks by raising an exception.

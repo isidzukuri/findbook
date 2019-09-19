@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 module Library
-class Book
-  class AllDataQuery
-    attr_reader :params
+  class Book
+    class AllDataQuery
+      attr_reader :params
 
-    def initialize(params = {})
-      @params = params
-    end
+      def initialize(params = {})
+        @params = params
+      end
 
-    def call
-      return book_data.with_indifferent_access, tags_data, authors_data
-    end
+      def call
+        [book_data.with_indifferent_access, tags_data, authors_data]
+      end
 
-    private
+      private
 
-    def book_data
-      return @book_data if @book_data
+      def book_data
+        return @book_data if @book_data
 
-      sql = <<-SQL
+        sql = <<-SQL
         SELECT
           library_books.*,
           library_genres.title as genre_title,
@@ -29,26 +31,26 @@ class Book
         LEFT JOIN library_books_tags ON library_books_tags.book_id = library_books.id
         WHERE library_books.seo = '#{params[:seo]}'
         GROUP BY library_books.id
-      SQL
+        SQL
 
-      @book_data = ActiveRecord::Base.connection.exec_query(sql).to_hash[0]
-    end
-
-    def tags_data
-      if book_data&.fetch('tags_ids').present?
-        Tag.where(id: book_data['tags_ids'].split(',')).to_a
-      else
-        []
+        @book_data = ActiveRecord::Base.connection.exec_query(sql).to_hash[0]
       end
-    end
 
-    def authors_data
-      if book_data&.fetch('authors_ids').present?
-        Author.where(id: book_data['authors_ids'].split(',')).to_a
-      else
-        []
+      def tags_data
+        if book_data&.fetch('tags_ids').present?
+          Tag.where(id: book_data['tags_ids'].split(',')).to_a
+        else
+          []
+        end
+      end
+
+      def authors_data
+        if book_data&.fetch('authors_ids').present?
+          Author.where(id: book_data['authors_ids'].split(',')).to_a
+        else
+          []
+        end
       end
     end
   end
-end
 end

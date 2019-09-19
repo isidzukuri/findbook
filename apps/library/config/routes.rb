@@ -6,7 +6,7 @@ Library::Engine.routes.draw do
   # get 'errors/not_found'
   # get 'errors/internal_server_error'
   #
-  resources :authors,         only: [:index, :show]
+  resources :authors,         only: %i[index show]
   resources :books,           only: [:show]
 
   # resources :contacts,        only: [:index]

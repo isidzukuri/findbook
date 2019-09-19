@@ -2,7 +2,7 @@
 
 module Library
   class Book < ApplicationRecord
-    VIEW_ATTRIBUTES = [:id, :title, :seo, :is_copy] + Format::AVAILABLE
+    VIEW_ATTRIBUTES = %i[id title seo is_copy] + Format::AVAILABLE
 
     has_and_belongs_to_many :authors
 
@@ -10,7 +10,8 @@ module Library
     validates :seo, presence: true
     validates_uniqueness_of :seo
 
-    def self.thumb(obj);end
-    def self.only_paper?(obj);end
+    def self.thumb(obj); end
+
+    def self.only_paper?(obj); end
   end
 end

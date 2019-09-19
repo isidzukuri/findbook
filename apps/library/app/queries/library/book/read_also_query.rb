@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 module Library
-class Book
-  class ReadAlsoQuery
-    attr_reader :params
+  class Book
+    class ReadAlsoQuery
+      attr_reader :params
 
-    def initialize(params = {})
-      @params = params
-    end
+      def initialize(params = {})
+        @params = params
+      end
 
-    def call
-      items = []
-      return items unless params[:tags_ids]
+      def call
+        items = []
+        return items unless params[:tags_ids]
 
-      sql = <<-SQL
+        sql = <<-SQL
             SELECT DISTINCT
               library_books.id,
               library_books.title,
@@ -25,24 +27,24 @@ class Book
                 AND library_books.id > #{random_id}
                 AND library_books.is_copy = false #{language}
             LIMIT #{limit}
-      SQL
+        SQL
 
-      ActiveRecord::Base.connection.exec_query(sql).to_hash
-    end
+        ActiveRecord::Base.connection.exec_query(sql).to_hash
+      end
 
-    private
+      private
 
-    def limit
-      params[:limit] || 6
-    end
+      def limit
+        params[:limit] || 6
+      end
 
-    def language
-      params[:language] ? " AND library_books.language = '#{params[:language]}'" : ''
-    end
+      def language
+        params[:language] ? " AND library_books.language = '#{params[:language]}'" : ''
+      end
 
-    def random_id
-      rand(1..params[:book_id].to_i)
+      def random_id
+        rand(1..params[:book_id].to_i)
+      end
     end
   end
-end
 end

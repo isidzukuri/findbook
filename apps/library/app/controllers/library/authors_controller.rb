@@ -2,7 +2,6 @@
 
 module Library
   class AuthorsController < ApplicationController
-
     def index
       @items = Author.order(:full_name).paginate(page: params[:page], per_page: @per_page).all
     end
