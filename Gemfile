@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mysql2'
 
 gem 'library', path: 'apps/library'
+gem 'admin', path: 'apps/admin'

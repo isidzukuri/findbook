@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe Library::Seo::GenerateSlug do
+RSpec.describe Admin::Seo::GenerateSlug do
   let(:book) { build(:book) }
 
   describe '.call' do
     it 'validates params' do
       expect { described_class.call }.to raise_error(ArgumentError)
-      expect { described_class.call(object: Library::Book.new) }.to raise_error(ArgumentError)
+      expect { described_class.call(object: Admin::Book.new) }.to raise_error(ArgumentError)
     end
 
     it 'creates uniq slug by attribute' do

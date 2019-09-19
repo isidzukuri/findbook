@@ -15,6 +15,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'factory_bot_rails'
 require 'ffaker'
+require 'simple_tools'
+require 'stringex'
 require 'awesome_print'
 require 'rails-controller-testing'
 

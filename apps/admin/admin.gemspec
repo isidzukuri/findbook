@@ -26,7 +26,12 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 6.0.0"
+  s.add_dependency 'sass-rails', '~> 5'
   s.add_dependency 'mysql2'
+  s.add_dependency 'simple_tools'
+  s.add_dependency 'stringex'
+  s.add_dependency 'will_paginate', '~> 3.1.0'
+  s.add_dependency 'will_paginate-bootstrap'
 
   s.add_development_dependency 'awesome_print'
   s.add_development_dependency 'database_cleaner'

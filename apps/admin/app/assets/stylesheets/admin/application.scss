@@ -1,0 +1,148 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ /*
+  * This is a manifest file that'll be compiled into application.css, which will include all the files
+  * listed below.
+  *
+  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+  *
+  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+  * files in this directory. Styles in this file should be added after the last require_* statement.
+  * It is generally better to create a new file per style scope.
+  *
+  *= require_tree 
+  */
+
+  html{
+      min-height: 100%;
+      position:relative;
+  }
+  footer{
+      padding: 0 10px 3px;
+      width:100%;
+    position: absolute;
+    bottom: 0;
+  }
+
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 480px) {
+      body {
+        /* Margin bottom by footer height */
+        margin-bottom: 80px;
+      }
+  }
+
+
+
+
+
+
+  a{
+      color: #653306;
+  }
+  a:hover{
+      color:#c58a16;
+  }
+  .main_content{
+      margin-top: 70px;
+  }
+  .col-centered{
+      float: none;
+      margin: 0 auto;
+  }
+  .block_center{
+      float:none;
+      margin:0 auto;
+  }
+  .top_menu{
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+
+      h1{
+          font-family: 'Fira Sans', sans-serif;
+          font-size: 19px;
+          font-weight: 900;
+          margin:0;
+      }
+
+      a{
+          color: #a57d5a !important;
+      }
+  }
+  .pagination a{
+      color: #653306 !important;
+  }
+  .pagination{
+      margin-bottom: 27px;
+  }
+  @media (max-width: 605px){
+      .book_panel_link.read_also{
+          height: 180px;
+      }
+  }
+  @media (max-width: 415px) {
+      .book_panel_link{
+          height: 280px;
+      }
+      .book_panel_link.read_also{
+          height: 160px;
+      }
+  }
+
+  .bold{
+      font-weight: 700;
+  }
+  .justify{
+      text-align: justify;
+  }
+  .section_title{
+      text-align: center;
+      margin-bottom: 35px;
+  }
+  .paginator_wrapper{
+      text-align: center;
+  }
+  .books_pool{
+      margin: 10px 0;
+  }
+    .description_book_item{
+      margin-bottom: 30px;
+  }
+  .article_image{
+      text-align:center;
+      margin-bottom: 15px;
+      img{
+          max-width:100%;
+      }
+  }
+  #tags_autocomplete{
+      margin-bottom: 10px;
+  }
+  #tags_results a{
+      font-size: 12px;
+      margin: 0 2px 2px;
+      display: inline-block;
+  }
+  .tags_pool{
+      overflow: hidden;
+  }

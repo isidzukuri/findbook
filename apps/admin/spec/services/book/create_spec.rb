@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe Library::Book::Create do
+RSpec.describe Admin::Book::Create do
   let(:params) { attributes_for(:book) }
   let(:authors) { [create(:author)] }
 
   describe '.call' do
     it 'creates new db entry' do
-      expect { described_class.call(book: params) }.to change { Library::Book.count }.by(1)
+      expect { described_class.call(book: params) }.to change { Admin::Book.count }.by(1)
     end
 
     it 'return errors if not valid' do

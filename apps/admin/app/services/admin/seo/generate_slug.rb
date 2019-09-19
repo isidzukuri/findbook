@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Library
+module Admin
   module Seo
     class GenerateSlug < ::SimpleTools::Operation
       SLUG_COLUMN = :seo

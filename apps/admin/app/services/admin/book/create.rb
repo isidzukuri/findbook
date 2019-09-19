@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Library
+module Admin
   class Book
     class Create < ::SimpleTools::Operation
       step :build

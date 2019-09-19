@@ -1,4 +1,16 @@
 PATH
+  remote: apps/admin
+  specs:
+    admin (0.1.0)
+      mysql2
+      rails (~> 6.0.0)
+      sass-rails (~> 5)
+      simple_tools
+      stringex
+      will_paginate (~> 3.1.0)
+      will_paginate-bootstrap
+
+PATH
   remote: apps/library
   specs:
     library (0.1.0)
@@ -215,6 +227,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  admin!
   awesome_print
   bootsnap (>= 1.4.2)
   byebug
