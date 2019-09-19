@@ -2,9 +2,9 @@
 
 <%= render partial: "bibliotheca/books/list", collection: @items, as: :item  %>
 
-<%= render partial: "bibliotheca/shared/paginator" %>
+< %= render partial: "bibliotheca/shared/paginator" %>
 
-<% content_for(:title, "#{@author.display_title}. Скачати книги безкоштовно або купити з доставкою") %> 
+<% content_for(:title, "#{@author.display_title}. Скачати книги безкоштовно або купити з доставкою") %>
 <% content_for :meta do %>
 <meta content='<%= @author.title %>' property='og:title'>
 <meta content='website' property='og:type'>

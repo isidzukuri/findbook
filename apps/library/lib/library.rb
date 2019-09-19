@@ -2,6 +2,7 @@
 
 require 'library/engine'
 require 'securerandom'
+require "will_paginate/bootstrap"
 
 module Library
   # Your code goes here...

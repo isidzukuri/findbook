@@ -19,6 +19,7 @@ require 'simple_tools'
 require 'stringex'
 require 'awesome_print'
 require 'rails-controller-testing'
+require 'sass-rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 
