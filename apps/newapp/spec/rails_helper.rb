@@ -14,6 +14,10 @@ ActiveRecord::Migrator.migrations_paths << File.expand_path('../db/migrate', __d
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'ffaker'
+require 'awesome_print'
+require 'rails-controller-testing'
+
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -23,4 +27,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
+
+  %i[controller view request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration, type: type
+  end
 end
