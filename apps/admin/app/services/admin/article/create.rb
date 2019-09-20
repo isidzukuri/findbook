@@ -5,7 +5,6 @@ module Admin
     class Create < ::SimpleTools::Operation
       step :build
       step :generate_slug
-      step :validate
       step :persist
 
       def build
@@ -18,10 +17,6 @@ module Admin
         result = Seo::GenerateSlug.call(object: context[:article], attribute: :title)
 
         context[:article].seo = result.context[:slug]
-      end
-
-      def validate
-        errors!(context[:article].errors.messages) unless context[:article].validate
       end
 
       def persist
