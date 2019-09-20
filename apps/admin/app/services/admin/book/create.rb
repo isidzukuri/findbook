@@ -6,7 +6,6 @@ module Admin
       step :build
       step :generate_slug
       step :add_authors_by_ids
-      step :validate
       step :persist
       # TODO:
       # step :add_to_elastic
@@ -28,10 +27,6 @@ module Admin
         if params[:authors_ids]
           context[:book].authors = Author.where(id: params[:authors_ids])
         end
-      end
-
-      def validate
-        errors!(context[:book].errors.messages) unless context[:book].validate
       end
 
       def persist
